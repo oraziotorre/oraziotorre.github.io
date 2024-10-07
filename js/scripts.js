@@ -30,48 +30,4 @@ window.addEventListener('DOMContentLoaded', event => {
             }
         });
     });
-
-
-    const articles = [
-        {
-            url: "https://www.aicanet.it/-/studenti-di-baronissi-protagonisti-delle-olimpiadi-di-informatica",
-            title: "Students of Baronissi Protagonists of the Computer Science Olympics",
-            description: "A brief overview of the achievements of students from Baronissi in the Computer Science Olympics.",
-            image: "https://via.placeholder.com/150"  // Immagine di esempio
-        },
-        {
-            url: "https://example.com/article-2",
-            title: "Another Article Title",
-            description: "Description of another article that discusses relevant topics.",
-            image: "https://via.placeholder.com/150"  // Immagine di esempio
-        },
-        {
-            url: "https://example.com/article-3",
-            title: "Third Article Title",
-            description: "Summary of the third article providing insights and information.",
-            image: "https://via.placeholder.com/150"  // Immagine di esempio
-        }
-    ];
-
-    const container = document.getElementById('articles-container');
-
-    articles.forEach(article => {
-        const { url, title, description, image } = article;
-
-        // Crea il blocco HTML per ciascun articolo
-        const articleBlock = `
-                <div class="article-block">
-                    <a href="${url}" target="_blank">
-                        <img src="${image}" alt="${title}" class="article-logo">
-                        <div class="article-content">
-                            <h3>${title}</h3>
-                            <p>${description}</p>
-                        </div>
-                    </a>
-                </div>
-            `;
-        container.innerHTML += articleBlock;
-    });
-
-
 });
