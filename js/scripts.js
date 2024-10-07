@@ -33,39 +33,44 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
     const articles = [
-        "https://www.aicanet.it/-/studenti-di-baronissi-protagonisti-delle-olimpiadi-di-informatica"
+        {
+            url: "https://www.aicanet.it/-/studenti-di-baronissi-protagonisti-delle-olimpiadi-di-informatica",
+            title: "Students of Baronissi Protagonists of the Computer Science Olympics",
+            description: "A brief overview of the achievements of students from Baronissi in the Computer Science Olympics.",
+            image: "https://via.placeholder.com/150"  // Immagine di esempio
+        },
+        {
+            url: "https://example.com/article-2",
+            title: "Another Article Title",
+            description: "Description of another article that discusses relevant topics.",
+            image: "https://via.placeholder.com/150"  // Immagine di esempio
+        },
+        {
+            url: "https://example.com/article-3",
+            title: "Third Article Title",
+            description: "Summary of the third article providing insights and information.",
+            image: "https://via.placeholder.com/150"  // Immagine di esempio
+        }
     ];
 
     const container = document.getElementById('articles-container');
 
-    articles.forEach(url => {
-        // Fetch the article metadata
-        fetch(url)
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(data, 'text/html');
+    articles.forEach(article => {
+        const { url, title, description, image } = article;
 
-                // Extract Open Graph metadata
-                const title = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || 'No title';
-                const description = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || 'No description';
-                const image = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'default-image.png';
-
-                // Create the HTML block
-                const articleBlock = `
-                    <div class="article-block">
-                        <a href="${url}" target="_blank">
-                            <img src="${image}" alt="${title}" class="article-logo">
-                            <div class="article-content">
-                                <h3>${title}</h3>
-                                <p>${description}</p>
-                            </div>
-                        </a>
-                    </div>
-                `;
-                container.innerHTML += articleBlock;
-            })
-            .catch(error => console.error('Error fetching article metadata:', error));
+        // Crea il blocco HTML per ciascun articolo
+        const articleBlock = `
+                <div class="article-block">
+                    <a href="${url}" target="_blank">
+                        <img src="${image}" alt="${title}" class="article-logo">
+                        <div class="article-content">
+                            <h3>${title}</h3>
+                            <p>${description}</p>
+                        </div>
+                    </a>
+                </div>
+            `;
+        container.innerHTML += articleBlock;
     });
 
 
