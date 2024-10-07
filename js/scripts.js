@@ -31,10 +31,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
-});
 
-
-    // Array of article URLs
     const articles = [
         "https://www.aicanet.it/-/studenti-di-baronissi-protagonisti-delle-olimpiadi-di-informatica"
     ];
@@ -70,3 +67,6 @@ window.addEventListener('DOMContentLoaded', event => {
             })
             .catch(error => console.error('Error fetching article metadata:', error));
     });
+
+
+});
