@@ -32,3 +32,41 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+
+    // Array of article URLs
+    const articles = [
+        "https://www.aicanet.it/-/studenti-di-baronissi-protagonisti-delle-olimpiadi-di-informatica"
+    ];
+
+    const container = document.getElementById('articles-container');
+
+    articles.forEach(url => {
+        // Fetch the article metadata
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(data, 'text/html');
+
+                // Extract Open Graph metadata
+                const title = doc.querySelector('meta[property="og:title"]')?.getAttribute('content') || 'No title';
+                const description = doc.querySelector('meta[property="og:description"]')?.getAttribute('content') || 'No description';
+                const image = doc.querySelector('meta[property="og:image"]')?.getAttribute('content') || 'default-image.png';
+
+                // Create the HTML block
+                const articleBlock = `
+                    <div class="article-block">
+                        <a href="${url}" target="_blank">
+                            <img src="${image}" alt="${title}" class="article-logo">
+                            <div class="article-content">
+                                <h3>${title}</h3>
+                                <p>${description}</p>
+                            </div>
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += articleBlock;
+            })
+            .catch(error => console.error('Error fetching article metadata:', error));
+    });

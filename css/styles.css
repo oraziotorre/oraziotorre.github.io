@@ -11419,6 +11419,53 @@ section.resume-section {
 section.resume-section .resume-section-content {
   width: 100%;
 }
+.resume-section {
+  padding: 40px 20px;
+}
+
+.articles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.article-block {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.article-block:hover {
+  transform: translateY(-5px);
+}
+
+.article-logo {
+  max-width: 80px;
+  margin-right: 20px;
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-content h3 {
+  font-size: 18px;
+  margin: 0;
+  color: #333;
+}
+
+.article-content p {
+  font-size: 14px;
+  color: #666;
+}
 
 @media (min-width: 768px) {
   section.resume-section {
